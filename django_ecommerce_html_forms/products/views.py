@@ -31,7 +31,11 @@ def create_product(request):
             return render(
                 request,
                 'create_product.html',
-                context={'categories': categories, 'errors': errors}
+                context={
+                    'categories': categories,
+                    'errors': errors,
+                    'payload': request.POST
+                }
             )
 
         # Validate name
@@ -53,7 +57,11 @@ def create_product(request):
             return render(
                 request,
                 'create_product.html',
-                context={'categories': categories, 'errors': errors}
+                context={
+                    'categories': categories,
+                    'errors': errors,
+                    'payload': request.POST
+                }
             )
 
         category = Category.objects.get(name=request.POST.get('category'))
@@ -68,7 +76,7 @@ def create_product(request):
         # create product images
         images = []
         for i in range(3):
-            image = request.POST.get('image-{}'.format(i + 1))
+            image = request.POST.get('image_{}'.format(i + 1))
             if image:
                 images.append(image)
 
@@ -107,7 +115,8 @@ def edit_product(request, product_id):
                 context={
                     'product': product,
                     'categories': categories,
-                    'errors': errors
+                    'errors': errors,
+                    'payload': request.POST
                 }
             )
 
@@ -133,7 +142,8 @@ def edit_product(request, product_id):
                 context={
                     'product': product,
                     'categories': categories,
-                    'errors': errors
+                    'errors': errors,
+                    'payload': request.POST
                 }
             )
 
@@ -148,7 +158,7 @@ def edit_product(request, product_id):
 
         new_images = []
         for i in range(3):
-            image = request.POST.get('image-{}'.format(i + 1))
+            image = request.POST.get('image_{}'.format(i + 1))
             if image:
                 new_images.append(image)
 
