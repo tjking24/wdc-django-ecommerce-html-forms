@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block main %}
+  <p class="lead">Featured products <i style="color: orange;" title='Edit' class="fas fa-star"></i></p>
+  <div class="row">
+
+    {% if featured_products %}
+      {% for featured_product in featured_products %}
+      <div class="col" style="">
+        <div class="card mx-auto" style="height: 100%; width: 12rem;">
+          {% if featured_product.productimage_set.all %}
+          <div class="product-image-container">
+            <img class="card-img-top product-image" src="{{featured_product.productimage_set.first.url}}" alt="Card image cap">
+          </div>
+          {% else %}
+          <div class="product-image-container">
+            <img class="card-img-top product-image" src="https://via.placeholder.com/150x150" alt="Card image cap">
+          </div>
+          {% endif %}
+          <div class="card-body text-center">
+            <h5 class="card-title text-truncate" title="{{featured_product.name}}">{{featured_product.name}}</h5>
+            <p class="card-text">${{featured_product.price}}</p>
+            <a href="/edit-product/{{featured_product.id}}" class="btn btn-primary">Details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="col">
+        <p class="text-center font-italic">No products marked as featured yet.</p>
+      </div>
+    {% endif %}
+
+  </div>
+
+  <br>
+  <br>
+  <a style="margin-bottom: 10px;" class="btn btn-outline-primary float-right" href="/create-product" role="button">Create product</a>
+  <p class="lead">List of all available products</p>
+  <table class="table table-striped">
+    <thead>
+      <tr style="text-align: center;">
+        <th>#</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Featured</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr style="text-align: center;">
+        <td>{{ forloop.counter }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category.name }}</td>
+        <td>${{ product.price }}</td>
+        <td>
+          {% if product.featured %}
+          <a href="/toggle-featured/{{product.id}}"><i style="color: orange;" title='Edit' class="fas fa-star"></i></a>
+          {% else %}
+          <a href="/toggle-featured/{{product.id}}"><i title='Edit' class="far fa-star"></i></a>
+          {% endif%}
+        </td>
+        <td>
+          <a href="/edit-product/{{product.id}}"><i title='Edit' class="fas fa-edit"></i></a>
+          <a href="/delete-product/{{product.id}}">
+            <i style="color: crimson;" title='Delete' class="fas fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
