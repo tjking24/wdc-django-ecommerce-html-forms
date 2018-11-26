@@ -8,36 +8,28 @@
 
     <div class="form-group">
       <label for="name"><b>Name *</b></label>
-      <input type="text" class="form-control {% if errors.name %}is-invalid{% endif %}" id="name" name="name">
-      {% if errors.name %}
-        <p style="color: #dc3545">{{errors.name}}</p>
-      {% endif %}
+      <input type="text" class="form-control" id="name" name="name" value="TEST NAME">
     </div>
     <div class="form-group">
       <label for="sku"><b>SKU *</b></label>
-      <!-- Add is-invalid class to SKU input in case of error -->
-      <input type="text" class="form-control" id="sku" name="sku">
-      <!-- Show SKU error -->
-      <!-- YOUR CODE HERE -->
+      <input type="text" class="form-control is-invalid" id="sku" name="sku" value="123">
+      <p style="color: #dc3545">SKU must contain 8 alphanumeric characters</p>
     </div>
     <div class="form-group">
       <label for="price"><b>Price *</b></label>
-      <!-- Add is-invalid class to Price input in case of error -->
-      <input type="number" class="form-control" id="price" name="price" step=".1">
-      <!-- Show Price error -->
-      <!-- YOUR CODE HERE -->
+      <input type="number" class="form-control" id="price" name="price" step=".1" value="123">
     </div>
     <div class="form-group">
       <label for="category"><b>Category</b></label>
       <select class="form-control" id="category" name="category">
-        {% for category in categories %}
-          <option>{{category.name}}</option>
-        {% endfor %}
+        <option>Category 1</option>
+        <option>Category 2</option>
+        <option>Category 3</option>
       </select>
     </div>
     <div class="form-group">
       <label for="description"><b>Description</b></label>
-      <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+      <textarea class="form-control" id="description" name="description" rows="3">Some product description</textarea>
     </div>
     <div class="form-group">
       <label for="images"><b>Images</b></label>
