@@ -25,6 +25,7 @@ There's also a LIVE version of the solution so you can try it and check how ever
 
 https://wdc-ecommerce-html-forms.herokuapp.com/products/
 
+![image](https://user-images.githubusercontent.com/1155573/49093930-ee53cc80-f243-11e8-93d1-6fb6a8f9d183.png)
 
 ### Your Tasks
 
