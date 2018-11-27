@@ -6,7 +6,7 @@ END=" \#\#\# \033[0m\n"
 HOST=0.0.0.0
 PORT=8080
 PYTHONPATH=django_ecommerce_html_forms
-DJANGO_SETTINGS=django_ecommerce_html_forms.settings
+DJANGO_SETTINGS=django_ecommerce_html_forms.settings.base
 
 # django-command = django-admin $(1) $(HOST):$(PORT) --settings $(DJANGO_SETTINGS) --pythonpath $(PYTHONPATH)
 django-command = django-admin $(1) $(2) --settings $(DJANGO_SETTINGS) --pythonpath $(PYTHONPATH)
