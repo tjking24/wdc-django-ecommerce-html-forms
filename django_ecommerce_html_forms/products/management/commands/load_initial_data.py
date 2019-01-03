@@ -18,7 +18,7 @@ class Command(BaseCommand):
             username='admin', email='admin@example.com', password='admin')
 
         CATEGORIES = [
-            'Shoes', 'Accessories', 'Clothing'
+            'Shoes', 'Accessories', 'Clothing', 'Sports'
         ]
         categories = []
         for category in CATEGORIES:
@@ -26,18 +26,25 @@ class Command(BaseCommand):
             categories.append(c)
 
         PRODUCTS = [
-            ('Nike Vapor', '44444444', categories[0], 129.99),
-            ('Nike Cap', '33333333', categories[1], 27.99),
-            ('Diamond Necklace', '88888888', categories[1], 233),
-            ('Sweater', '55555555', categories[2], 49.99),
+            ('Nike Vapor', '44444444', categories[3], 129.99, True),
+            ('Nike Cap', '33333333', categories[1], 27.99, True),
+            ('Diamond Necklace', '88888888', categories[1], 233, True),
+            ('Sweater', '55555555', categories[2], 49.99, True),
+            ('Socks', '11111111', categories[2], 8.99, False),
+            ('Jean', '22222222', categories[2], 39.99, False),
+            ('Rings', '66666666', categories[1], 19.99, False),
+            ('Shoes', '77777777', categories[0], 80.99, False),
+            ('Leggings', '99999999', categories[3], 29.99, False),
+            ('Gloves', '99999999', categories[1], 29.99, False),
         ]
         products = []
-        for name, sku, category, price in PRODUCTS:
+        for name, sku, category, price, featured in PRODUCTS:
             p = Product.objects.create(
                 name=name,
                 sku=sku,
                 category=category,
-                price=price
+                price=price,
+                featured=featured
             )
             products.append(p)
 
@@ -45,7 +52,13 @@ class Command(BaseCommand):
             'https://images-na.ssl-images-amazon.com/images/I/61toIdeEdZL._UX695_.jpg',
             'https://images-na.ssl-images-amazon.com/images/I/61-Rm5tfPML._UX679_.jpg',
             'https://images-na.ssl-images-amazon.com/images/I/61x3zjjiDsL._UY695_.jpg',
-            'https://images-na.ssl-images-amazon.com/images/I/51DtYxTRVfL._SX679._SX._UX._SY._UY_.jpg'
+            'https://images-na.ssl-images-amazon.com/images/I/51DtYxTRVfL._SX679._SX._UX._SY._UY_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/61t50Fa1WXL._SL1010_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/815CjHgZClL._UY879_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/71DfpJ8EatL._UX679_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/81gVrGpMBKL._UY695_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/613I3iAunmL._UX679_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/71Wu3PZqRLL._UX679_.jpg'
         ]
         for index, image in enumerate(IMAGES):
             ProductImage.objects.create(
