@@ -37,4 +37,4 @@ load_initial_data:
 
 test:
 	@echo $(TAG)Testing$(END)
-	$(call django-command, test artists)
+	$(call django-command, test products)
