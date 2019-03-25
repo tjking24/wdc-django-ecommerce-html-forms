@@ -7,6 +7,7 @@
     {% if featured_products %}
       <!-- Loop through all featured products and render the component below replacing each part properly -->
       <!-- YOUR FOR LOOP HERE -->
+      <div class="col" style="">
         <div class="card mx-auto" style="height: 100%; width: 12rem;">
           {% if featured_product.productimage_set.all %}
           <div class="product-image-container">
@@ -28,6 +29,7 @@
             <a href="/edit-product/99999" class="btn btn-primary">Details</a>
           </div>
         </div>
+      </div>
       <!-- YOUR END FOR LOOP HERE -->
     {% else %}
       <div class="col">
