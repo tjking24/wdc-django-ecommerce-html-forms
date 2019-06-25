@@ -56,7 +56,7 @@ def create_product(request):
 		
         _ = [ProductImage.objects.create( product=product, url=image_url) for image_url in images_url if len(image_url) > 1 ]
 		
-		return redirect('products')
+        return redirect('products')
 
 def edit_product(request, product_id):
     # Get product with given product_id
