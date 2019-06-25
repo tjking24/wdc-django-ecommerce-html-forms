@@ -3,8 +3,8 @@
 TAG="\n\n\033[0;32m\#\#\# "
 END=" \#\#\# \033[0m\n"
 
-HOST=0.0.0.0
-PORT=8080
+HOST=127.0.0.1
+PORT=8000
 PYTHONPATH=django_ecommerce_html_forms
 DJANGO_SETTINGS=django_ecommerce_html_forms.settings.base
 
