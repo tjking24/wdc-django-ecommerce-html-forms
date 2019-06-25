@@ -17,8 +17,7 @@ def create_product(request):
     categories = Category.objects.all()
      
     if request.method == 'GET':
-		return render(request, 'create_product.html', 
-					context={'categories':categories})  
+		return render(request, 'create_product.html',context={'categories':categories})  
 	elif request.method == 'POST':
 		
 		fields = ['name', 'sku', 'price']
@@ -29,8 +28,7 @@ def create_product(request):
 				errors[field] = 'Missing Field. You need to enter the {}'.format(field)
 		
 		if errors:
-			return render(request,'create_product.html',
-									context= {'errors': errors})							
+            return render(request,'create_product.html',context= {'errors': errors})							
 							
 		name = request.POST.get('name')
 		if len(name) > 100:
@@ -48,18 +46,12 @@ def create_product(request):
       
         
 		if errors:
-			return render(request,'create_product.html',
-									context= {'errors': errors})
+			return render(request,'create_product.html',context= {'errors': errors})
 		
 		category = Category.objects.get(name = request.POST.get('category'))
 		
 		
-		product = Product.objects.create(name = name,
-										sku = sku,
-										category = category,
-										description = request.POST.get('description'),
-										price = price)
-		
+		product = Product.objects.create(name = name,sku = sku,category = category,description = request.POST.get('description'),price = price)
 		images = ['image_1', 'image_2', 'image_3']
 		
 		images_url = [request.POST.get(image) for image in images]
@@ -79,9 +71,7 @@ def edit_product(request, product_id):
 	
 	if request.method == 'GET':
 		
-		return render(request,'edit_product.html',context={'product':product,
-													'categories':categories,
-													'images':product_images})	
+		return render(request,'edit_product.html',context={'product':product,'categories':categories,'images':product_images})	
 
 	elif request.method == 'POST':
         
@@ -94,8 +84,7 @@ def edit_product(request, product_id):
 				errors[field] = 'Missing Field. You need to enter the {}'.format(field)
 		
 		if errors:
-			return render(request,'create_product.html',
-									context= {'errors': errors})							
+			return render(request,'create_product.html',context= {'errors': errors})							
 			
           
 		product.name = request.POST.get('name')
