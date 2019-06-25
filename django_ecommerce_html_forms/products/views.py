@@ -17,7 +17,7 @@ def create_product(request):
     categories = Category.objects.all()
      
     if request.method == 'GET':
-		return render(request, 'create_product.html',context={'categories':categories})  
+        return render(request, 'create_product.html', context={'categories':categories})  
 	elif request.method == 'POST':
 		
 		fields = ['name', 'sku', 'price']
