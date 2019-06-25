@@ -14,9 +14,9 @@ def products(request):
 							'featured_products': featured_products})
 
 def create_product(request):
-  categories = Category.objects.all()
+    categories = Category.objects.all()
      
-	if request.method == 'GET':
+    if request.method == 'GET':
 		return render(request, 'create_product.html', 
 					context={'categories':categories})  
 	elif request.method == 'POST':
